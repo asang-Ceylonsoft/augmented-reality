@@ -2,15 +2,15 @@
   <div class="col-6 col-md-4 col-lg-3">
     <div class="product product-11 mt-v3 text-center">
       <figure class="product-media">
-        <a href="product.html">
+        <RouterLink :to="{ name: 'product-view', params: { id: encodeString(product.id) } }">
           <img :src="product.thumbnail" alt="Product image" class="product-image" />
           <img :src="product.thumbnail" alt="Product image" class="product-image-hover" />
-        </a>
+        </RouterLink>
 
         <div class="product-action-vertical">
           <a class="btn-product-icon btn-wishlist"><span>add to wishlist</span></a>
           <a
-            :href="'https://ar.aries.lk/marker?model='+product.model"
+            :href="'https://ar.aries.lk/marker?model=' + product.model"
             v-if="product.show_ar == 1"
             class="btn-product-icon"
             ><i class="fa fa-eye" aria-hidden="true"></i
@@ -22,7 +22,9 @@
 
       <div class="product-body">
         <h3 class="product-title">
-          <a href="product.html">{{ product.name }}</a>
+          <RouterLink :to="{ name: 'product-view', params: { id: encodeString(product.id) } }">{{
+            product.name
+          }}</RouterLink>
         </h3>
         <!-- End .product-title -->
         <div class="product-price">{{ this.formatCurrency(product.price) }}</div>
@@ -50,7 +52,7 @@
 import ProductColor from "./product-color.vue";
 import { RouterLink } from "vue-router";
 import { formatCurrency } from "../../helpers/currency";
-import { detectMobilePlatform } from "../../helpers/utils";
+import { detectMobilePlatform, encodeString } from "../../helpers/utils";
 
 export default {
   props: ["product"],
@@ -59,6 +61,7 @@ export default {
   },
   methods: {
     formatCurrency,
+    encodeString,
     detectMobilePlatform,
     // onARClicked(product) {
     //   alert(product.show_ar);

@@ -6,5 +6,9 @@ const routes = [{
     path: '/cart',
     name: 'cart',
     component: () => import("../pages/cart.vue")
+},{
+    path: '/product/:id',
+    name: 'product-view',
+    component: () => import("../pages/product-view.vue")
 }];
 export default routes;

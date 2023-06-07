@@ -14,4 +14,11 @@ function detectMobilePlatform() {
     });
 }
 
-export {detectMobilePlatform};
+function encodeString(value) {
+    return btoa(value);
+}
+
+export {
+    detectMobilePlatform,
+    encodeString
+};
